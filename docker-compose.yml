@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  turntable:
+    container_name: turntable
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    devices:
+      - /dev/input/by-id/usb-BurrBrown_from_Texas_Instruments_USB_AUDIO_CODEC-event-if03:/dev/turntable
+    privileged: true
+    ports:
+      - 8000:8000
